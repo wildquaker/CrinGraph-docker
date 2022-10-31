@@ -1,0 +1,3 @@
+[submodule "CrinGraph"]
+	path = CrinGraph
+	url = https://github.com/mlochbaum/CrinGraph.git
