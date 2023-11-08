@@ -20,7 +20,7 @@
                 "file": "Diana V2"
             },
             {
-                "name": "AB-1266 Phi",
+                "name": "AmB-1266 Phi",
                 "file": "AB-1266 Phi"
             },
             {
@@ -600,6 +600,24 @@
                 "name": "Panda",
                 "collab": "THX",
                 "file": "Panda"
+            }
+        ]
+    },
+    {
+        "name": "Dyson",
+        "phones": [
+            {
+                "name": "Zone",
+                "file": [
+                    "Zone (Enhanced)",
+                    "Zone (Bass Boost)",
+                    "Zone (Neutral)"
+                ],
+                "suffix": [
+                    "(\"Enhanced\" EQ)",
+                    "(\"Bass Boost\" EQ)",
+                    "(\"Neutral\" EQ)"
+                ]
             }
         ]
     },
@@ -1199,6 +1217,10 @@
                     "(Production)",
                     "(Pre-production)"
                 ]
+            },
+            {
+                "name": "Para",
+                "file": "Para"
             },
             {
                 "name": "Venus",

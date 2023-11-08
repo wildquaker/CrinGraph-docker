@@ -27,7 +27,13 @@ const DIR = "data_hp/",
       stickyLabels = false,
       analyticsEnabled = false;
 
-const tsvParse = fr => d3.tsvParseRows(fr).slice(3,530).map(r=>r.map(d=>+d));
+//const tsvParse = fr => d3.tsvParseRows(fr).slice(3,530).map(r=>r.map(d=>+d));
+function tsvParse(fr) {
+    return fr.split(/[\r\n]/)
+        .map(l => l.trim()).filter(l => l && l[0] !== '*')
+        .map(l => l.split(/[\s,]+/).map(e => parseFloat(e)).slice(0, 2))
+        .filter(t => !isNaN(t[0]) && !isNaN(t[1]));
+}
 
 function watermark(svg) {
     let wm = svg.append("g")

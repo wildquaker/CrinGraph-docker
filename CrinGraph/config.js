@@ -34,7 +34,7 @@ const init_phones = ["HTH67"],                      // Optional. Which graphs to
 // Specify which targets to display
 const targets = [
     { type:"Neutral",    files:["Diffuse Field","Etymotic","Free Field","Innerfidelity ID"] },
-    { type:"Reviewer",   files:["Antdroid","Bad Guy","Banbeucmas","Crinacle","Precogvision","Super Review","Timmy","Quakey"] },
+    { type:"Reviewer",   files:["Antdroid","Bad Guy","Banbeucmas","Crinacle","Precogvision","Super Review","Gizaudio","Quakey"] },
     { type:"Preference", files:["Harman","Rtings","Sonarworks"] }
 ];
 
