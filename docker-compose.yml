@@ -8,5 +8,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./CrinGraph:/usr/local/apache2/htdocs
+      - ./src:/usr/local/apache2/htdocs
     working_dir: "/usr/local/apache2/htdocs"

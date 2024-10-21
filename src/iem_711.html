@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+<head>
+    <title>CrinGraph | 711 Rig IEM Tool</title>
+    <meta name="description" content="View and compare frequency response graphs for earphones." />
+    <link rel="shortcut icon" href="cringraph-favicon.png" type="image/x-icon" />
+    <link rel="icon" href="cringraph-favicon.png" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="css/iem_711/style-alt.css" rel="stylesheet" />
+    <link href="css/iem_711/extra.css" rel="stylesheet" />
+    <link href="css/iem_711/reinvented-color-wheel.min.css" rel="stylesheet" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="CrinGraph | 711 Rig IEM Tool" />
+    <link rel="apple-touch-icon" href="cringraph-favicon.png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <style type="text/css">body { opacity: 0.0; transition: opacity 0.1s ease-in; }</style>
+    <base target="_parent" />
+    <link rel="canonical" href="" />
+</head>
+<body>
+    <div class="graphtool">
+        <noscript>Turn on Javascript</noscript>
+    </div>
+    <script src="js/iem_711/d3.v5.min.js"></script>
+    <script src="js/iem_711/d3-selection-multi.v1.min.js"></script>
+    <script src="js/iem_711/fuse.min.js"></script>
+    <script src="js/iem_711/jquery.min.js"></script>
+    <script src="js/iem_711/reinvented-color-wheel.min.js"></script>
+    <script src="js/iem_711/config.js"></script>
+    <script src="js/iem_711/equalizer.js"></script>
+    <script src="js/iem_711/saveSvgAsPng.js"></script>   
+    <script src="js/iem_711/listAugment.js"></script>
+    <script src="js/iem_711/graphAnalytics.js"></script>
+    <script src="js/iem_711/graphtool.js"></script>
+    <audio id="pinkNoiseAudio" preload="auto" loop>
+        <source src="audio/pinknoise.wav" type="audio/wav"></source>
+    </audio>
+    <audio id="scarletFIRE" preload="auto" loop>
+        <source src="audio/Scarlet_Fire-Otis_McDonald.mp3" type="audio/mp3"></source>
+    </audio>
+</body>
+</html>

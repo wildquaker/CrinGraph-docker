@@ -1,0 +1,223 @@
+
+/* If user has system preference for dark mode, this theme overrides the theme above. Optional */
+@media ( prefers-color-scheme: dark ) {
+}
+
+/* Color theme: Super* */
+:root {
+    --accent-color: hsl(210, 53%, 49%);
+    --accent-color-contrast: hsl(210, 50%, 40%);
+    
+    --background-color: hsl(54, 5%, 99%);
+    --background-color-contrast: hsl(54, 5%, 95%);
+    --background-color-contrast-more: hsl(54, 0%, 75%);
+    --background-color-graph: hsl(54, 0%, 100%);
+    
+    --background-color-inputs: hsl(210, 10%, 90%);
+
+    --font-color-primary: hsl(210, 20%, 10%);
+    --font-color-secondary: hsl(210, 20%, 100%);
+    --font-color-inputs: hsl(210, 20%, 40%);
+    
+    --font-primary: 'Open Sans', sans-serif;
+    --font-secondary: monospace;
+    
+    --scrollbar-color: 255,255,255;
+    --scrollbar-accent: 0,0,0;
+        
+    --header-color: hsl(215, 20%, 10%);
+    --header-links-color: hsl(0, 0%, 100%);
+    --header-menu-icon-color: hsl(0, 0%, 100%);
+    
+    --logo-filter: none;
+    --svg-filter: grayscale(1);
+}
+
+/* Color theme: Super* Dark */
+body.dark-mode {
+    --accent-color: hsl(54, 100%, 63%);
+    --accent-color-contrast: hsl(54, 100%, 40%);
+    
+    --background-color: hsl(215, 14%, 10%);
+    --background-color-contrast: hsl(215, 14%, 8%);
+    --background-color-contrast-more: hsl(215, 14%, 25%);
+    --background-color-graph: hsl(215, 14%, 7%);
+    --background-color-graph: hsl(215, 14%,5%);
+    
+    --background-color-inputs: hsl(215, 14%, 5%);
+    --font-color-primary: hsl(54, 11%, 87%);
+    --font-color-secondary: #000;
+    --font-color-inputs: hsl(215, 14%, 40%);
+    
+    --font-primary: 'Open Sans', sans-serif;
+    --font-secondary: monospace;
+    
+    --scrollbar-color: 0,0,0;
+    --scrollbar-accent: 255,255,255;
+        
+    --header-color: hsl(215, 20%, 10%);
+    --header-links-color: hsl(0, 0%, 100%);
+    --header-menu-icon-color: hsl(0, 0%, 100%);
+    
+    --logo-filter: none;
+    --svg-filter: invert(1.0) grayscale(1.0);
+}
+
+image.please-spin-me {
+    animation-name: super-stamp;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    
+    opacity: 0.25;
+}
+
+@keyframes super-stamp {
+    0% {
+        transform: rotate(0deg);
+    }
+    66% {
+        transform: rotate(760deg);
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+/*****
+Graph lite *****/
+
+/* Horizontal lines */
+
+svg#fr-graph > g:nth-of-type(3) > text {
+    fill: var(--font-color-primary);
+    font-size: 8px;
+    
+    opacity: 0.8;
+}
+
+svg#fr-graph > g:nth-of-type(3) g.tick line {
+    stroke: var(--background-color-contrast-more);
+    stroke-width: 1px;
+    
+    opacity: 0.2;
+}
+
+svg#fr-graph > g:nth-of-type(3) g.tick:nth-child(2n+1) line {
+    opacity: 0.1;
+}
+
+svg#fr-graph > g:nth-of-type(3) g.tick text {
+    fill: var(--font-color-primary);
+    font-size: 8px;
+    
+    opacity: 0.4;
+}
+
+svg#fr-graph > g:nth-of-type(3) g.tick:nth-child(2n+1) text {
+    display: none;
+}
+
+/* Vertical lines */
+svg#fr-graph > g:nth-of-type(4) g.tick line {
+    stroke: var(--background-color-contrast-more);
+    stroke-width: 1px;
+    
+    opacity: 0.2;
+}
+
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-of-type(1) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-last-of-type(1) line {
+    display: none;
+}
+
+svg#fr-graph > g:nth-of-type(4) g.tick text {
+    fill: var(--font-color-primary);
+    font-size: 8px;
+    
+    opacity: 0.4;
+}
+
+/***** For lite graph: Dark lines *****/
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(6) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(10) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(15) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(19) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(21) line,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(23) line {
+    opacity: 0.8;
+}
+
+/***** For lite graph: Dark labels *****/
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(6) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(10) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(15) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(19) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(21) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(23) text {
+    opacity: 0.8;
+}
+
+@media (max-width: 1000px) {
+/***** For lite graph: Dark labels *****/
+    svg#fr-graph > g:nth-of-type(3) g.tick text {
+        font-size: 150%;
+    }
+    
+    svg#fr-graph > g:nth-of-type(4) g.tick text {
+        display: none;
+    }
+    
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(6) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(10) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(15) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(19) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(21) text,
+svg#fr-graph > g:nth-of-type(4) g.tick:nth-child(23) text {
+        display: inherit;
+        font-size: 150%;
+    }
+}
+
+@media (max-width: 1000px) {
+    header.header ul.header-links li:nth-child(1) a:after {
+        top: 3px;
+        right: 0;
+        margin: 0 14px;
+        
+        
+        border-color: var(--font-color-primary);
+        
+        color: var(--font-color-primary);
+    }
+}
+
+image.wm-squiglink-logo {
+    
+}
+
+text.wm-squiglink-address {
+    color: var(--font-color-primary);
+    color: magenta;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 14px;
+    
+    filter: var(--svg-filter);
+}
+
+path[data-phone-name="IEF Comp Target"] {
+    display: none;
+}
+
+g.curves-g path:nth-last-child(2 of .target:not([data-phone-name="IEF Comp Target"])) {
+    stroke-dasharray: 20, 10 !important;
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
+
+g.curves-g path:nth-child(3 of .target:not([data-phone-name="IEF Comp Target"])) {
+    stroke-dasharray: 3, 3 !important;
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
