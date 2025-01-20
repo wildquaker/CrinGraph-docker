@@ -1,7 +1,7 @@
 const toolType = "4620";
 const toolPath = "iem_5128.html"
 
-const init_phones = [ "Project Meta V3.0 (Silicone narrow)","JM-1 Target" ], // Optional. Which graphs to display on initial load. Note: Share URLs will override this set
+const init_phones = [ "Reference V2.0","PopAvg-DF (JM-1) Target" ], // Optional. Which graphs to display on initial load. Note: Share URLs will override this set
       DIR = "../../data/iem_5128/",                            // Directory where graph files are stored
       default_channels = ["L","R"],                     // Which channels to display. Avoid javascript errors if loading just one channel per phone
       default_normalization = "dB",                     // Sets default graph normalization mode. Accepts "dB" or "Hz"
@@ -26,13 +26,13 @@ const init_phones = [ "Project Meta V3.0 (Silicone narrow)","JM-1 Target" ], // 
       accessories = true,                               // If true, displays specified HTML at the bottom of the page. Configure further below
       externalLinksBar = true,                          // If true, displays row of pill-shaped links at the bottom of the page. Configure further below
       expandable = true,                               // Enables button to expand iframe over the top of the parent page
-      expandableOnly = 767,                           // Prevents iframe interactions unless the user has expanded it. Accepts "true" or "false" OR a pixel value; if pixel value, that is used as the maximum width at which expandableOnly is used
+      expandableOnly = false,                           // Prevents iframe interactions unless the user has expanded it. Accepts "true" or "false" OR a pixel value; if pixel value, that is used as the maximum width at which expandableOnly is used
       headerHeight = '0px',                             // Optional. If expandable=true, determines how much space to leave for the parent page header
       darkModeButton = true,                        // Adds a "Dark Mode" button the main toolbar to let users set preference
       targetDashed = true,                         // If true, makes target curves dashed lines
       targetColorCustom = false,                    // If false, targets appear as a random gray value. Can replace with a fixed color value to make all targets the specified color, e.g. "black"
       targetRestoreLastUsed = false,				// Restore user's last-used target settings on load
-      labelsPosition = "bottom-right",                   // Up to four labels will be grouped in a specified corner. Accepts "top-left," bottom-left," "bottom-right," and "default"
+      labelsPosition = "default",                   // Up to four labels will be grouped in a specified corner. Accepts "top-left," bottom-left," "bottom-right," and "default"
       stickyLabels = true,                         // "Sticky" labels 
       analyticsEnabled = false,                     // Enables Google Analytics 4 measurement of site usage
       exportableGraphs = true,                      // Enables export graph button     
@@ -43,12 +43,11 @@ const init_phones = [ "Project Meta V3.0 (Silicone narrow)","JM-1 Target" ], // 
       extraEQBandsMax = 20,                         // Max EQ bands available
       extraToneGeneratorEnabled = true;             // Enable tone generator function
 
-const targets = [{ type:"Diffuse Field", files:["JM-1","5128 Diffuse Field","JM-1 x 5128 DF"] }];
-const customTargetDispNames = {
-    "JM-1": "JM-1",
-    "5128 Diffuse Field": "5128 Diffuse Field",
-    "JM-1 x 5128 DF": "JM-1 x 5128 DF",
-}
+const targets = [
+    { type:"Diffuse Field"   , files:["PopAvg-DF (JM-1)","5128-DF","PopAvg-DF (JM-1) x 5128-DF"] },
+    { type:"Preference", files:["Harman IE 2019 (B&K 5128)","SoundGuys","LMG 0.6","Quakey In-Ear"] }
+];
+const customTargetDispNames = {}
 
 const  preference_bounds_name = "Preference Bounds RAW",  // Preference bounds name
        preference_bounds_dir = "../../data/iem_5128/pref_bounds/",  // Preference bounds directory
@@ -58,12 +57,12 @@ const  preference_bounds_name = "Preference Bounds RAW",  // Preference bounds n
        default_y_scale = "40db",                       // Default Y scale; values: ["20db", "30db", "40db", "50db", "crin"]
        default_DF_name = "JM-1",                   // Default RAW DF name
        dfBaseline = true,                              // If true, DF is used as baseline when custom df tilt is on
-       default_bass_shelf = 4,                         // Default Custom DF bass shelf value
+       default_bass_shelf = 4.5,                         // Default Custom DF bass shelf value
        default_tilt = -1,                            // Default Custom DF tilt value
        default_ear = 0,                                // Default Custom DF ear gain value
        default_treble = 0,                             // Default Custom DF treble gain value
-       tiltableTargets = ["JM-1", "5128 Diffuse Field", "JM-1 x 5128 DF"],                 // Targets that are allowed to be tilted
-       compTargets = ["JM-1", "5128 Diffuse Field", "JM-1 x 5128 DF"],                     // Targets that are allowed to be used for compensation
+       tiltableTargets = ["PopAvg-DF (JM-1)","5128-DF","PopAvg-DF (JM-1) x 5128-DF"],                 // Targets that are allowed to be tilted
+       compTargets = ["Harman IE 2019 (B&K 5128)","SoundGuys","LMG 0.6"],                     // Targets that are allowed to be used for compensation
        allowCreatorSupport = false;                     // Allow the creator to have a button top right to support them
 
 function watermark(svg) {

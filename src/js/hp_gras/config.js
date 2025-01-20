@@ -46,7 +46,7 @@ const init_phones = [ "HD650 S2 (2020) (fresh pads)","IEF Neutral Target" ], // 
       extraToneGeneratorEnabled = true;             // Enable tone generator function
 
 const targets = [
-    { type:"Neutral"   , files:["IEF Neutral","Diffuse Field","Free Field","Harman In-room Flat"] },
+    { type:"Neutral"   , files:["KEMAR-DF (KB50XX)","IEF Neutral","Diffuse Field","Free Field","Harman In-room Flat"] },
     { type:"Preference", files:['Harman AE OE 2018','Harman without Bass Shelf','Harman AE OE 2015','Harman AE OE 2013'] }
 ];
 const customTargetDispNames = { };
@@ -59,12 +59,12 @@ const  preference_bounds_name = "Preference Bounds RAW",  // Preference bounds n
        default_y_scale = "40db",                       // Default Y scale; values: ["20db", "30db", "40db", "50db", "crin"]
        default_DF_name = "IEF Neutral",                   // Default RAW DF name
        dfBaseline = true,                              // If true, DF is used as baseline when custom df tilt is on
-       default_bass_shelf = 5,                         // Default Custom DF bass shelf value
+       default_bass_shelf = 5.5,                         // Default Custom DF bass shelf value
        default_tilt = 0,                            // Default Custom DF tilt value
        default_ear = 0,                                // Default Custom DF ear gain value
        default_treble = 0,                             // Default Custom DF treble gain value
-       tiltableTargets = ["IEF Neutral","Diffuse Field","Free Field","Harman In-room Flat"],                 // Targets that are allowed to be tilted
-       compTargets = ["IEF Neutral","Diffuse Field","Free Field","Harman In-room Flat"],                     // Targets that are allowed to be used for compensation
+       tiltableTargets = ["KEMAR-DF (KB50XX)","Diffuse Field (IEC 60318-7)","IEF Neutral","Harman In-room Flat","Free Field"],                 // Targets that are allowed to be tilted
+       compTargets = ["Harman AE OE 2018","Harman without Bass Shelf","Harman AE OE 2015","Harman AE OE 2013"],                     // Targets that are allowed to be used for compensation
        allowCreatorSupport = false;                     // Allow the creator to have a button top right to support them
 
 function watermark(svg) {

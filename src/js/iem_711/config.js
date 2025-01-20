@@ -44,7 +44,7 @@ const init_phones = [ "Meta V3","IEF Neutral 2023 Target" ], // Optional. Which 
       extraToneGeneratorEnabled = true;             // Enable tone generator function
 
 const targets = [
-    { type:"Neutral"   , files:["IEF Neutral 2023","IEF Neutral 2020","Diffuse Field","Etymotic","Free Field","Innerfidelity ID"] },
+    { type:"Neutral"   , files:["IEF Neutral 2023","JM-1","IEF Neutral 2020","Diffuse Field","Etymotic","Free Field","Innerfidelity ID"] },
     { type:"Preference", files:["Harman IE 2019 v2","Harman IE 2019","Harman IE 2017","Harman IE 2016","Rtings"] }
 ];
 
@@ -58,12 +58,12 @@ const  preference_bounds_name = "Preference Bounds RAW",  // Preference bounds n
        default_y_scale = "40db",                       // Default Y scale; values: ["20db", "30db", "40db", "50db", "crin"]
        default_DF_name = "IEF Neutral 2023",                   // Default RAW DF name
        dfBaseline = false,                              // If true, DF is used as baseline when custom df tilt is on
-       default_bass_shelf = 5,                         // Default Custom DF bass shelf value
+       default_bass_shelf = 5.5,                         // Default Custom DF bass shelf value
        default_tilt = 0,                            // Default Custom DF tilt value
        default_ear = 0,                                // Default Custom DF ear gain value
        default_treble = 0,                             // Default Custom DF treble gain value
-       tiltableTargets = ["IEF Neutral 2023","IEF Neutral 2020","Diffuse Field","Etymotic","Free Field","Innerfidelity ID"],                 // Targets that are allowed to be tilted
-       compTargets = ["IEF Neutral 2023","IEF Neutral 2020","Diffuse Field","Etymotic","Free Field","Innerfidelity ID"],                     // Targets that are allowed to be used for compensation
+       tiltableTargets = ["IEF Neutral 2023","JM-1","IEF Neutral 2020","Diffuse Field","Etymotic","Free Field","Innerfidelity ID"],                 // Targets that are allowed to be tilted
+       compTargets = ["Harman IE 2019 v2","Harman IE 2019","Harman IE 2017","Harman IE 2016","Rtings"],                     // Targets that are allowed to be used for compensation
        allowCreatorSupport = false;                     // Allow the creator to have a button top right to support them
 
 function watermark(svg) {

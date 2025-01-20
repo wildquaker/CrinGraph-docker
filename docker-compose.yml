@@ -7,8 +7,4 @@ services:
       - "80:80"
     volumes:
       - ./src:/var/www/html
-      - measurements-data:/var/www/html/data
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-
-volumes:
-  measurements-data:
