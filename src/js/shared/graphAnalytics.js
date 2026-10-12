@@ -1,102 +1,136 @@
-let analyticsSite = "Generic Graph site",
-  analyticsGtmId = "GTM-0000000",
-  logAnalytics = true;
+/**
+ * Graph Analytics Module for CrinGraph
+ * Integrates Google Tag Manager (GTM) and dispatches tracking events to dataLayer.
+ */
+"use strict";
 
+var analyticsSite = "Generic Graph site";
+var analyticsGtmId = "GTM-0000000";
+var logAnalytics = true;
+
+/**
+ * Injects Google Tag Manager script into document head.
+ */
 function setupGraphAnalytics() {
-  const gtmScriptContent =
-      "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" +
-      analyticsGtmId +
-      "');",
-    gtmIframeSrc =
-      "https://www.googletagmanager.com/ns.html?id=" + analyticsGtmId,
-    gtmIframeStyle = "display: none; visibility: hidden;",
-    graphAnalyticsSrc = "graphAnalytics.js";
+  if (typeof document === "undefined") return;
 
-  const pageHead = document.querySelector("head"),
-    pageBody = document.querySelector("body"),
-    gtmScript = document.createElement("script"),
-    gtmNoscript = document.createElement("noscript"),
-    gtmIframe = document.createElement("iframe"),
-    graphAnalytics = document.createElement("script");
+  const gtmScript = document.createElement("script");
+  gtmScript.textContent =
+    `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});` +
+    `var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';` +
+    `j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;` +
+    `f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${analyticsGtmId}');`;
 
-  gtmScript.textContent = gtmScriptContent;
-  pageHead.prepend(gtmScript);
+  const head = document.head || document.querySelector("head");
+  if (head) {
+    head.prepend(gtmScript);
+  }
 }
+
 setupGraphAnalytics();
 
-window.dataLayer = window.dataLayer || [];
+if (typeof window !== "undefined") {
+  window.dataLayer = window.dataLayer || [];
+}
 
-function pushPhoneTag(eventName, p, trigger) {
-  let eventTrigger = trigger ? trigger : "user",
-    phoneBrand = p.dispBrand ? p.dispBrand : "Target",
-    phoneModel = p.phone,
-    phoneVariant = p.dispName,
-    value = 1;
+/**
+ * Push headphone/earphone interaction event to dataLayer.
+ * @param {string} eventName - Name of analytics event.
+ * @param {object} p - Phone/IEM model data object.
+ * @param {string} [trigger="user"] - Trigger source.
+ */
+function pushPhoneTag(eventName, p = {}, trigger = "user") {
+  const eventTrigger = trigger || "user";
+  const phoneBrand = p?.dispBrand || "Target";
+  const phoneModel = p?.phone;
+  const phoneVariant = p?.dispName;
+  const value = 1;
 
-  window.dataLayer.push({
+  const payload = {
     event: eventName,
     trigger: eventTrigger,
     site: analyticsSite,
     phoneBrand: phoneBrand,
     phoneModel: phoneModel,
     phoneVariant: phoneVariant,
-    phoneName: phoneBrand + " " + phoneModel,
+    phoneName: `${phoneBrand} ${phoneModel}`,
     value: value,
-  });
+  };
+
+  if (typeof window !== "undefined" && window.dataLayer) {
+    window.dataLayer.push(payload);
+  }
 
   if (logAnalytics) {
     console.log(
-      "Event:      " +
-        eventName +
-        "\nTrigger:    " +
-        eventTrigger +
-        "\nSite:       " +
-        analyticsSite +
-        "\nPhone:      " +
-        phoneBrand +
-        " " +
-        phoneModel +
-        "\nVariant:    " +
-        phoneVariant,
+      `Event:      ${eventName}\n` +
+      `Trigger:    ${eventTrigger}\n` +
+      `Site:       ${analyticsSite}\n` +
+      `Phone:      ${phoneBrand} ${phoneModel}\n` +
+      `Variant:    ${phoneVariant}`,
     );
   }
 }
 
-function pushEventTag(eventName, targetWindow, other, trigger) {
-  let eventTrigger = trigger ? trigger : "user",
-    url = targetWindow.location.href,
-    par = "?share=",
-    value = 1,
-    activePhones = url.includes(par)
-      ? decodeURI(url.replace(/_/g, " ").split(par).pop().replace(/,/g, ", "))
-      : "null",
-    otherData = other ? other : "null";
+/**
+ * Push generic UI interaction event with active graph URL context to dataLayer.
+ * @param {string} eventName - Name of analytics event.
+ * @param {Window|object} [targetWindow] - Target window containing the graph URL.
+ * @param {string} [other="null"] - Additional event detail or label.
+ * @param {string} [trigger="user"] - Trigger source.
+ */
+function pushEventTag(eventName, targetWindow, other = "null", trigger = "user") {
+  const eventTrigger = trigger || "user";
+  const win = targetWindow || (typeof window !== "undefined" ? window : null);
+  const url = win?.location?.href || "";
+  const par = "?share=";
+  const value = 1;
 
-  window.dataLayer.push({
+  const activePhones = url.includes(par)
+    ? decodeURI(url.replace(/_/g, " ").split(par).pop().replace(/,/g, ", "))
+    : "null";
+  const otherData = other || "null";
+
+  const payload = {
     event: eventName,
     trigger: eventTrigger,
     site: analyticsSite,
     activePhones: activePhones,
     other: otherData,
     value: value,
-  });
+  };
+
+  if (typeof window !== "undefined" && window.dataLayer) {
+    window.dataLayer.push(payload);
+  }
 
   if (logAnalytics) {
     console.log(
-      "Event:      " +
-        eventName +
-        "\nTrigger:    " +
-        eventTrigger +
-        "\nSite name:  " +
-        analyticsSite +
-        "\nActive:     " +
-        activePhones +
-        "\nOther:      " +
-        otherData,
+      `Event:      ${eventName}\n` +
+      `Trigger:    ${eventTrigger}\n` +
+      `Site name:  ${analyticsSite}\n` +
+      `Active:     ${activePhones}\n` +
+      `Other:      ${otherData}`,
     );
   }
 }
 
 if (logAnalytics) {
   console.log("... Analytics initialized ... ");
+}
+
+if (typeof window !== "undefined") {
+  window.pushPhoneTag = pushPhoneTag;
+  window.pushEventTag = pushEventTag;
+  window.setupGraphAnalytics = setupGraphAnalytics;
+}
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    setupGraphAnalytics,
+    pushPhoneTag,
+    pushEventTag,
+    analyticsSite,
+    analyticsGtmId,
+    logAnalytics,
+  };
 }
