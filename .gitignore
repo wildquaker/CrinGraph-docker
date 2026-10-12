@@ -1,3 +1,1 @@
-src/data/hp_gras/*[.csv, .json, .tsv, .txt]
-src/data/iem_711/*[.csv, .json, .tsv, .txt]
-src/data/iem_5128/*[.csv, .json, .tsv, .txt]
+src/data/

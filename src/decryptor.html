@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Squig Decryptor</title>
+    <link rel="stylesheet" href="css/decryptor/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/decryptor/styles.css" />
+    <meta name="description" content="Decrypt and decode squig JSON data for CrinGraph frequency response tools." />
+    <link rel="icon" href="cringraph-logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="cringraph-logo.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+</head>
+<body>
+    <div class="container">
+        <form id="decryptorForm">
+            <div class="mb-3">
+                <label for="json-string" class="form-label">JSON String</label>
+                <textarea class="form-control" id="json-string" rows="12"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="key" class="form-label">Key</label>
+                <input type="text" class="form-control" id="key" />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button" id="decryptBtn">Decrypt</button>
+            </div>
+        </form>
+        <div class="mb-3">
+            <label for="output" class="form-label">Output</label>
+            <textarea class="form-control" readonly id="output" rows="12"></textarea>
+        </div>
+    </div>
+    <script src="js/decryptor/jquery.min.js"></script>
+    <script src="js/decryptor/popper.min.js"></script>
+    <script src="js/decryptor/bootstrap.min.js"></script>
+    <script src="js/decryptor/cryptojs-aes.min.js"></script>
+    <script src="js/decryptor/cryptojs-aes-format.min.js"></script>
+    <script src="js/decryptor/uuid.min.js"></script>
+    <script src="js/decryptor/script.js"></script>
+</body>
+</html>

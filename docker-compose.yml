@@ -1,8 +1,7 @@
-version: "3.8"
-
 services:
   web:
     build: .
+    working_dir: /var/www/html
     ports:
       - "80:80"
     volumes:

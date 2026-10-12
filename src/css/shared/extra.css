@@ -1,29 +1,27 @@
-/** hidden class **/
 .hidden {
   display: none !important;
 }
 
-/** Extra buttons **/
 button#avg-all,
 button#yscalebtn {
   position: relative;
-  
+
   box-sizing: border-box;
   padding: 11px 16px;
   margin: 0;
   overflow: hidden;
-  
+
   background-color: var(--background-color);
   border: 1px solid var(--background-color-contrast-more) !important;
   border: none;
   border-radius: 6px;
-  
+
   color: var(--accent-color-contrast);
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: 12px;
   line-height: 1em;
-  
+
   white-space: nowrap;
   cursor: pointer;
   outline: none;
@@ -34,7 +32,7 @@ button#yscalebtn:active {
   box-sizing: border-box;
   background-color: var(--accent-color) !important;
   border-color: var(--accent-color) !important;
-  
+
   color: var(--font-color-secondary);
 }
 
@@ -43,13 +41,12 @@ button#yscalebtn {
   margin-left: 6px;
 }
 
-/** y scaler **/
 div.yscaler {
   order: 1;
-  
+
   display: flex;
   align-items: center;
-  
+
   padding: 0 16px;
   border-left: 1px solid var(--background-color-contrast-more);
 }
@@ -68,23 +65,20 @@ div.yscaler > div {
   align-items: center;
 }
 
-/** extra anim and logo stuff **/
-
 text.site_name {
-    color: var(--font-color-primary);
-    color: magenta;
-    font-family: var(--font-primary);
-    font-weight: 700;
-    font-size: 14px;
-    
-    filter: var(--svg-filter);
+  color: var(--font-color-primary);
+  color: magenta;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 14px;
+
+  filter: var(--svg-filter);
 }
 
 image.graph_logo {
-    filter: var(--svg-filter);
+  filter: var(--svg-filter);
 }
 
-/** Color Picker Thingy **/
 .colorStylePicker {
   display: flex;
   align-items: flex-start;
@@ -113,8 +107,7 @@ image.graph_logo {
   flex-direction: row;
 }
 
-
-.colorStylePicker .right-side>div>span {
+.colorStylePicker .right-side > div > span {
   color: var(--font-color-inputs);
   font-family: var(--font-primary);
   font-size: 13.5px;
@@ -136,8 +129,6 @@ image.graph_logo {
   width: 55px !important;
 }
 
-/** Custom DF tilt**/
-
 div.customDF {
   display: flex;
   align-items: flex-start;
@@ -146,10 +137,10 @@ div.customDF {
   padding-left: 5px;
   max-height: 68px;
   overflow-x: auto;
-  overflow-y: hidden
+  overflow-y: hidden;
 }
 
-div.customDF>span {
+div.customDF > span {
   margin-right: 10px;
   padding-left: 10px;
   padding-top: 12px;
@@ -158,25 +149,25 @@ div.customDF>span {
   font-size: 11px;
   line-height: 1em;
   text-transform: uppercase;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 div.customDF .helptip {
-  display: none
+  display: none;
 }
 
-div.customDF>div {
+div.customDF > div {
   position: relative;
   display: flex;
   align-items: center;
   padding: 0 10px 0 0;
 }
 
-div.customDF>button+div {
-  margin-left: 6px
+div.customDF > button + div {
+  margin-left: 6px;
 }
 
-div.customDF>div>input,
+div.customDF > div > input,
 .colorStylePicker input {
   order: 2;
   box-sizing: border-box;
@@ -195,7 +186,7 @@ div.customDF>div>input,
   line-height: 1em;
   text-transform: uppercase;
   text-align: left;
-  padding-left: 11px
+  padding-left: 11px;
 }
 
 .colorStylePicker input {
@@ -207,9 +198,9 @@ div.customDF>div>input,
   height: 35.6px;
 }
 
-div.customDF>div:after{
+div.customDF > div:after {
   order: 3;
-  content: '';
+  content: "";
   box-sizing: border-box;
   display: block;
   width: 6px;
@@ -217,14 +208,14 @@ div.customDF>div:after{
   background-color: var(--background-color-inputs);
   border: 1px solid var(--background-color-contrast-more);
   border-left: none;
-  border-radius: 0 6px 6px 0
+  border-radius: 0 6px 6px 0;
 }
 
-div.customDF>div>span,
-.colorStylePicker .right-side>.row>span {
+div.customDF > div > span,
+.colorStylePicker .right-side > .row > span {
   order: 1;
   padding: 11px 16px;
-  background-color: var(--background-color)!important;
+  background-color: var(--background-color) !important;
   border: 1px solid var(--background-color-contrast-more);
   border-right: none;
   border-radius: 6px 0 0 6px;
@@ -232,28 +223,28 @@ div.customDF>div>span,
   font-weight: 400;
   font-size: 12px;
   line-height: 1em;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
-div.customDF>div.selected>span {
-  background-color: var(--accent-color)!important;
+div.customDF > div.selected > span {
+  background-color: var(--accent-color) !important;
   border-color: var(--accent-color);
-  color: var(--font-color-secondary)
+  color: var(--font-color-secondary);
 }
 
-div.customDF>button,
+div.customDF > button,
 .colorStylePicker button {
   padding: 11px 16px;
-  
+
   background-color: var(--background-color) !important;
   border: 1px solid var(--background-color-contrast-more);
   border-radius: 6px;
-  
+
   color: var(--accent-color-contrast);
   font-weight: 400;
   font-size: 12px;
   line-height: 1em;
-  
+
   white-space: nowrap;
   cursor: pointer;
 }
@@ -263,20 +254,20 @@ div.customDF>button,
   height: 35.6px;
 }
 
-div.customDF>button:active,
+div.customDF > button:active,
 .colorStylePicker button:active {
   box-sizing: border-box;
   background-color: var(--accent-color) !important;
   border-color: var(--accent-color) !important;
-  
+
   color: var(--font-color-secondary);
 }
 
-div.customDF>button.selected,
+div.customDF > button.selected,
 .colorStylePicker button.selected {
-  background-color: var(--accent-color)!important;
+  background-color: var(--accent-color) !important;
   border-color: var(--accent-color);
-  color: var(--font-color-secondary)
+  color: var(--font-color-secondary);
 }
 
 .colorStylePicker select {
@@ -284,12 +275,12 @@ div.customDF>button.selected,
   width: 120px;
   height: 36px;
   padding: 8px 6px 8px 0px;
-  
+
   background-color: var(--background-color-inputs);
   border: 1px solid var(--background-color-contrast-more);
   border-radius: 6px;
   outline: none;
-  
+
   color: var(--font-color-inputs);
   font-family: var(--font-secondary);
   font-size: 11px;
@@ -297,8 +288,6 @@ div.customDF>button.selected,
   text-transform: uppercase;
   text-align: center;
 }
-
-/** extra panel **/
 
 div.extra-panel {
   flex-direction: column;
@@ -348,8 +337,12 @@ div.extra-panel > div.extra-eq > div.select-eq-phone > select {
   background-repeat: no-repeat, repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath d='M0 0l5 4.998L10 0z' fill='%238c8c8c'/%3E%3C/svg%3E");
   background-color: var(--background-color-graph) !important;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
+  background-position:
+    right 0.7em top 50%,
+    0 0;
+  background-size:
+    0.65em auto,
+    100%;
 }
 
 div.extra-panel > div.extra-eq > div.filters-header > span,
@@ -365,7 +358,12 @@ div.extra-panel > div.extra-eq > div.filters > div.filter {
   gap: 7px;
 }
 
-div.extra-panel > div.extra-eq > div.filters > div.filter > span > input[type='checkbox'] {
+div.extra-panel
+  > div.extra-eq
+  > div.filters
+  > div.filter
+  > span
+  > input[type="checkbox"] {
   margin: 0;
   padding: 0 !important;
   appearance: none;
@@ -381,7 +379,12 @@ div.extra-panel > div.extra-eq > div.filters > div.filter > span > input[type='c
   place-content: center;
 }
 
-div.extra-panel > div.extra-eq > div.filters > div.filter > span > input[type="checkbox"]::before {
+div.extra-panel
+  > div.extra-eq
+  > div.filters
+  > div.filter
+  > span
+  > input[type="checkbox"]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -394,7 +397,12 @@ div.extra-panel > div.extra-eq > div.filters > div.filter > span > input[type="c
   margin: 2px auto;
 }
 
-div.extra-panel > div.extra-eq > div.filters > div.filter > span > input[type="checkbox"]:checked::before {
+div.extra-panel
+  > div.extra-eq
+  > div.filters
+  > div.filter
+  > span
+  > input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
@@ -410,15 +418,19 @@ div.extra-eq > div.eq-demo > select {
   padding: 0.3em 0.5em;
 
   color: var(--accent-color-contrast);
-  
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-repeat: no-repeat, repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath d='M0 0l5 4.998L10 0z' fill='%238c8c8c'/%3E%3C/svg%3E");
   background-color: var(--background-color-graph) !important;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
+  background-position:
+    right 0.7em top 50%,
+    0 0;
+  background-size:
+    0.65em auto,
+    100%;
 }
 
 div.extra-panel > div.extra-eq > div.filters > div.filter > span > input,
@@ -446,7 +458,7 @@ span:has(input[name="tone-generator-from"]),
 span:has(input[name="tone-generator-to"]),
 span:has(input[name="vol-left"]),
 span:has(input[name="vol-right"]) {
-    position: relative;
+  position: relative;
 }
 
 span:has(input[name="freq"]):after,
@@ -459,23 +471,23 @@ span:has(input[name="tone-generator-from"]):after,
 span:has(input[name="tone-generator-to"]):after,
 span:has(input[name="vol-left"]):after,
 span:has(input[name="vol-right"]):after {
-    position: absolute;
-    top: 3px;
-    right: 0px;
-    
-    content: 'Hz';
-    
-    box-sizing: border-box;
-    padding: 6px 10px 6px 0;
-    
-    border-left: none;
-    border-radius: 0 6px 6px 0;
-    
-    font-family: var(--font-secondary);
-    font-size: 11px;
-    line-height: 11px;
-    
-    pointer-events: none;
+  position: absolute;
+  top: 3px;
+  right: 0px;
+
+  content: "Hz";
+
+  box-sizing: border-box;
+  padding: 6px 10px 6px 0;
+
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  line-height: 11px;
+
+  pointer-events: none;
 }
 
 span:has(input[name="autoeq-from"]):after,
@@ -494,7 +506,7 @@ span:has(input[name="autoeq-gain-from"]):after,
 span:has(input[name="autoeq-gain-to"]):after,
 span:has(input[name="vol-left"]):after,
 span:has(input[name="vol-right"]):after {
-    content: 'dB';
+  content: "dB";
 }
 
 div.extra-panel div.settings-row,
@@ -538,7 +550,10 @@ div.extra-panel div.filters-button > span[class="eqopts"] > button {
 }
 
 div.extra-panel div.filters-button > span[class="eqopts"] > button.add-filter,
-div.extra-panel div.filters-button > span[class="eqopts"] > button.remove-filter {
+div.extra-panel
+  div.filters-button
+  > span[class="eqopts"]
+  > button.remove-filter {
   width: calc(50% - 3.5px);
 }
 
@@ -571,7 +586,7 @@ div.extra-panel button {
 }
 
 div.extra-eq > div.eq-demo {
-  margin: 0px 0 6px 0; 
+  margin: 0px 0 6px 0;
   display: flex;
   box-sizing: border-box;
   gap: 7px;
@@ -609,7 +624,7 @@ div.extra-eq > div.eq-demo > input[name="tone-generator-freq"] {
 
 div.settings-row > input[name="balance-vol"] {
   width: 100% !important;
-  margin:auto;
+  margin: auto;
 }
 
 div.extra-eq > div.eq-demo > span[name="current-freq"] {
@@ -665,16 +680,14 @@ div.extra-panel div.filters-button > button[class="pink-noise selected"] {
   cursor: pointer;
 }
 
-/* Style the volume icon */
 .volume-icon {
   color: var(--accent-color-contrast) !important;
   fill: var(--accent-color-contrast) !important;
 }
 
-/** separate target comp **/ 
 tbody.curves > tr > td.comp {
   order: 3;
-  
+
   padding: 0 0 0 13px;
 }
 
@@ -683,12 +696,12 @@ tbody.curves > tr > td.comp select {
   width: 120px;
   height: 36px;
   padding: 8px 6px 8px 0px;
-  
+
   background-color: var(--background-color-inputs);
   border: 1px solid var(--background-color-contrast-more);
   border-radius: 6px;
   outline: none;
-  
+
   color: var(--font-color-inputs);
   font-family: var(--font-secondary);
   font-size: 11px;
@@ -697,48 +710,48 @@ tbody.curves > tr > td.comp select {
   text-align: center;
 }
 
-@media ( max-width: 1200px ) {
+@media (max-width: 1200px) {
   tbody.curves > tr > td.comp {
     margin-left: auto;
   }
 }
 
-@media ( max-width: 500px) {
+@media (max-width: 500px) {
   tbody.curves > tr:before {
     order: 5;
-    
-    content:'';
+
+    content: "";
     display: block;
     flex: 100% 1 1;
-    
+
     height: 0px;
   }
-  
+
   tbody.curves > tr > td.channels {
     order: 3;
   }
-  
+
   tbody.curves > tr > td.levels {
     order: 4;
 
-      margin-right: 0px !important;
-  } 
+    margin-right: 0px !important;
+  }
 
   tbody.curves > tr > td.comp {
     order: 4 !important;
-      
+
     margin-right: 16px;
   }
-  
+
   tbody.curves > tr > td.button-baseline {
     margin-left: auto;
   }
-  
+
   tbody.curves > tr > td.button-baseline,
   tbody.curves > tr > td.hideIcon,
   tbody.curves > tr > td.button-pin {
     order: 5;
-  }   
+  }
 }
 
 tbody.curves > tr > td.remove {
@@ -773,7 +786,6 @@ tbody.curves > tr > td.button-saveSquig:after {
   background-color: var(--font-color-primary) !important;
 }
 
-/** color and line weight / line dash style menu **/
 .line-style-menu {
   display: flex;
   align-items: center;
@@ -786,7 +798,7 @@ tbody.curves > tr > td.button-saveSquig:after {
   position: absolute;
   background-color: var(--background-color);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 

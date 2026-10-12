@@ -1,7 +1,7 @@
 function augmentInit() {
-    targetBody = document.querySelector('body'),
-    augmentStyle = document.createElement('style'),
-    augmentCss = `
+  ((targetBody = document.querySelector("body")),
+    (augmentStyle = document.createElement("style")),
+    (augmentCss = `
         :root {
             --icon-new-tab: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cstyle%3E.cls-1,.cls-2%7Bfill:none;stroke:%23231f20;%7D.cls-2%7Bstroke-linecap:round;%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M21,11v2c0,3.77,0,5.66-1.17,6.83S16.77,21,13,21H11c-3.77,0-5.66,0-6.83-1.17S3,16.77,3,13V11C3,7.23,3,5.34,4.17,4.17S7.23,3,11,3h1'/%3E%3Cpath class='cls-2' d='M21,3.15H16.76m4.24,0V7.39m0-4.24-8.49,8.48'/%3E%3C/svg%3E");
             --icon-play-fill: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23231f20;fill-rule:evenodd;%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M12,21a9,9,0,1,0-9-9A9,9,0,0,0,12,21ZM10.78,8l5.65,3.14a1,1,0,0,1,0,1.74L10.78,16A1.2,1.2,0,0,1,9,15V9A1.2,1.2,0,0,1,10.78,8Z'/%3E%3C/svg%3E");
@@ -24,7 +24,6 @@ function augmentInit() {
             width: calc(350px - 94px);
             margin-top: -6px;
             margin-bottom: 8px;
-            /*border: 1px solid transparent;*/
             border-color: var(--accent-color-contrast);
             border-top: none;
             border-radius: 0 0 6px 6px;
@@ -222,9 +221,6 @@ function augmentInit() {
             opacity: 0.3;
         }
 
-        /*
-        5-stars */
-
         div.scroll div.phone-item[style*="border"][data-score="5"] {
             color: var(--font-color-primary);
 
@@ -251,130 +247,160 @@ function augmentInit() {
             background-color: #ffeb40 !important;
             background: linear-gradient(-90deg, #ffeb40, #fff7b2) !important;
         }
-    `,
-    isUs = window.navigator.language.split('-').pop() === 'US' ? 1 : 0;
-    
-    augmentStyle.textContent = augmentCss;
-    targetBody.append(augmentStyle);
+    `),
+    (isUs = window.navigator.language.split("-").pop() === "US" ? 1 : 0));
+
+  augmentStyle.textContent = augmentCss;
+  targetBody.append(augmentStyle);
 }
 augmentInit();
 
 function augmentList(phone) {
-    if(!phone.reviewScore && !phone.reviewLink && !phone.shopLink && !phone.price) {
-        return;
+  if (
+    !phone.reviewScore &&
+    !phone.reviewLink &&
+    !phone.shopLink &&
+    !phone.price
+  ) {
+    return;
+  }
+  let phoneName = phone.fullName,
+    phoneListItem = document.querySelector('div[name="' + phoneName + '"]'),
+    phoneListItemAugmented = phoneListItem.getAttribute("data-augment"),
+    reviewScore = phone.reviewScore
+      ? phone.reviewScore.length === 1 &&
+        typeof parseInt(phone.reviewScore) === "number"
+        ? parseInt(phone.reviewScore)
+        : phone.reviewScore
+      : false,
+    reviewStars =
+      !reviewScore.length && reviewScore >= 0 && reviewScore <= 5
+        ? true
+        : false,
+    reviewLink = phone.reviewLink,
+    reviewLinkLabel = reviewLink
+      ? reviewLink.split("http.").pop().split("/").shift()
+      : false,
+    reviewLinkVideo = reviewLink ? (reviewLink.includes("youtube") ? 1 : 0) : 0,
+    shopLink = phone.shopLink,
+    shopLinkAmazon = shopLink
+      ? shopLink.indexOf("amazon") > 0
+        ? true
+        : shopLink.indexOf("amzn") > 0
+          ? true
+          : false
+      : false,
+    shopLinkAli = shopLink
+      ? shopLink.indexOf("aliexpress") > 0
+        ? true
+        : false
+      : false,
+    shopLinkLabel = shopLink
+      ? shopLinkAmazon
+        ? "Amazon"
+        : shopLinkAli
+          ? "AliExpress"
+          : shopLink.replace("www.", "").split("://").pop().split("/").shift()
+      : false,
+    price = phone.price;
+
+  if (!phoneListItemAugmented) {
+    let agumentsContainer = document.createElement("article"),
+      augmentsRow1 = document.createElement("div"),
+      augmentsRow1_2 = document.createElement("div"),
+      augmentsRow1Col1 = document.createElement("div"),
+      augmentsRow1Col2 = document.createElement("div"),
+      augmentsRow1_2Col1 = document.createElement("div"),
+      augmentsStar1 = document.createElement("span"),
+      augmentsStar2 = document.createElement("span"),
+      augmentsStar3 = document.createElement("span"),
+      augmentsStar4 = document.createElement("span"),
+      augmentsStar5 = document.createElement("span"),
+      augmentsRow2 = document.createElement("div"),
+      augmentsRow3 = document.createElement("div"),
+      augmentsReviewLink = document.createElement("a"),
+      augmentsShopLink = document.createElement("a");
+
+    phoneListItem.setAttribute("data-augment", "1");
+
+    agumentsContainer.className = "augment";
+
+    augmentsRow1.append(augmentsRow1Col1);
+    augmentsRow1.append(augmentsRow1Col2);
+    augmentsRow1_2.append(augmentsRow1_2Col1);
+    augmentsRow1Col2.textContent = price;
+    augmentsRow1Col2.className = "augment-price";
+
+    if (typeof reviewScore === "number" && reviewStars) {
+      agumentsContainer.append(augmentsRow1);
+      agumentsContainer.append(augmentsRow1_2);
+      augmentsRow1.className = "augment-rank";
+      augmentsRow1_2.className = "augment-rank";
+
+      if (reviewScore > 4) {
+        augmentsRow1Col1.textContent = "âœ… Approved";
+      } else {
+        augmentsRow1Col1.textContent = "ðŸ§ª Tested";
+      }
+
+      augmentsRow1_2Col1.setAttribute("data-score", reviewScore);
+      augmentsRow1_2Col1.append(augmentsStar1);
+      augmentsRow1_2Col1.append(augmentsStar2);
+      augmentsRow1_2Col1.append(augmentsStar3);
+      augmentsRow1_2Col1.append(augmentsStar4);
+      augmentsRow1_2Col1.append(augmentsStar5);
+      augmentsRow1_2Col1.className = "augment-stars";
+    } else if (reviewScore && !reviewStars) {
+      agumentsContainer.append(augmentsRow1);
+      augmentsRow1.className = "augment-rank";
+
+      augmentsRow1Col1.className = "augment-score augment-score-unknown";
+      augmentsRow1Col1.textContent = reviewScore;
+      if (reviewScore.toLowerCase() === "approved") {
+        augmentsRow1Col1.textContent = "âœ… Approved";
+      } else if (reviewScore.toLowerCase() === "tested") {
+        augmentsRow1Col1.textContent = "ðŸ§ª Tested";
+      }
     }
-    let phoneName = phone.fullName,
-        phoneListItem = document.querySelector('div[name="'+ phoneName +'"]'),
-        phoneListItemAugmented = phoneListItem.getAttribute('data-augment'),
-        reviewScore = phone.reviewScore ? phone.reviewScore.length === 1 && typeof parseInt(phone.reviewScore) === 'number' ? parseInt(phone.reviewScore) : phone.reviewScore : false,
-        reviewStars = !reviewScore.length && reviewScore >= 0 && reviewScore <= 5 ? true : false,
-        reviewLink = phone.reviewLink,
-        reviewLinkLabel = reviewLink ? reviewLink.split('http.').pop().split('/').shift() : false,
-        reviewLinkVideo = reviewLink ? reviewLink.includes('youtube') ? 1 : 0 : 0,
-        shopLink = phone.shopLink,
-        shopLinkAmazon = shopLink ? shopLink.indexOf('amazon') > 0 ? true : shopLink.indexOf('amzn') > 0 ? true : false : false,
-        shopLinkAli = shopLink ? shopLink.indexOf('aliexpress') > 0 ? true : false : false,
-        shopLinkLabel = shopLink ? shopLinkAmazon ? 'Amazon' : shopLinkAli ? 'AliExpress' : shopLink.replace('www.','').split('://').pop().split('/').shift() : false,
-        price = phone.price;
-    
-    if (!phoneListItemAugmented) {
-        let agumentsContainer = document.createElement('article'),
-            augmentsRow1 = document.createElement('div'),
-            augmentsRow1_2 = document.createElement('div'),
-            augmentsRow1Col1 = document.createElement('div'),
-            augmentsRow1Col2 = document.createElement('div'),
-            augmentsRow1_2Col1 = document.createElement('div'),
-            augmentsStar1 = document.createElement('span'),
-            augmentsStar2 = document.createElement('span'),
-            augmentsStar3 = document.createElement('span'),
-            augmentsStar4 = document.createElement('span'),
-            augmentsStar5 = document.createElement('span'),
-            augmentsRow2 = document.createElement('div'),
-            augmentsRow3 = document.createElement('div'),
-            augmentsReviewLink = document.createElement('a'),
-            augmentsShopLink = document.createElement('a');
-        
-        phoneListItem.setAttribute('data-augment', '1');
 
-        agumentsContainer.className = "augment";
-                
-        augmentsRow1.append(augmentsRow1Col1);
-        augmentsRow1.append(augmentsRow1Col2);
-        augmentsRow1_2.append(augmentsRow1_2Col1);
-        augmentsRow1Col2.textContent = price;
-        augmentsRow1Col2.className = "augment-price";
-        
-        if (typeof reviewScore === 'number' && reviewStars) {
-            agumentsContainer.append(augmentsRow1);
-            agumentsContainer.append(augmentsRow1_2);
-            augmentsRow1.className = "augment-rank";
-            augmentsRow1_2.className = "augment-rank";
-            
-            if(reviewScore > 4) {
-                augmentsRow1Col1.textContent = "âœ… Approved";
-            }
-            else {
-                augmentsRow1Col1.textContent = "ðŸ§ª Tested";
-            }
+    if (reviewLink) {
+      augmentsRow2.append(augmentsReviewLink);
+      augmentsReviewLink.setAttribute("target", "_blank");
+      augmentsRow2.className = "augment-review";
 
-            augmentsRow1_2Col1.setAttribute('data-score', reviewScore);
-            augmentsRow1_2Col1.append(augmentsStar1);
-            augmentsRow1_2Col1.append(augmentsStar2);
-            augmentsRow1_2Col1.append(augmentsStar3);
-            augmentsRow1_2Col1.append(augmentsStar4);
-            augmentsRow1_2Col1.append(augmentsStar5);
-            augmentsRow1_2Col1.className = "augment-stars";
+      if (reviewLinkVideo) {
+        augmentsReviewLink.classList.add("video");
+      }
+      augmentsReviewLink.setAttribute("href", reviewLink);
+      augmentsReviewLink.textContent = "Review";
+      if (analyticsEnabled) {
+        augmentsReviewLink.addEventListener("click", function () {
+          pushPhoneTag("clicked_review", phone);
+        });
+      }
 
-            
-        } else if (reviewScore && !reviewStars) {
-            agumentsContainer.append(augmentsRow1);
-            augmentsRow1.className = "augment-rank";
-            
-            augmentsRow1Col1.className = "augment-score augment-score-unknown";
-            augmentsRow1Col1.textContent = reviewScore;
-            if(reviewScore.toLowerCase() === 'approved') {
-                augmentsRow1Col1.textContent = "âœ… Approved";
-            }
-            else if(reviewScore.toLowerCase() === 'tested') {
-                augmentsRow1Col1.textContent = "ðŸ§ª Tested";
-            }
-        }
-        
-        if (reviewLink) {
-            augmentsRow2.append(augmentsReviewLink);
-            augmentsReviewLink.setAttribute('target', '_blank');
-            augmentsRow2.className = "augment-review";
-            
-            if (reviewLinkVideo) {
-                augmentsReviewLink.classList.add('video');
-            }
-            augmentsReviewLink.setAttribute('href', reviewLink);
-            augmentsReviewLink.textContent = 'Review';
-            if (analyticsEnabled) {
-                augmentsReviewLink.addEventListener('click', function() {
-                    pushPhoneTag("clicked_review", phone);
-                });
-            }
-
-            agumentsContainer.append(augmentsRow2);
-        }
-        
-        if (shopLink) {
-            augmentsRow3.append(augmentsShopLink);
-            augmentsRow3.className = "augment-shop";
-            augmentsShopLink.setAttribute('target', '_blank');
-            
-            augmentsShopLink.setAttribute('href', shopLink);
-            augmentsShopLink.textContent = shopLinkLabel;
-            if (analyticsEnabled) {
-                augmentsShopLink.addEventListener('click', function() {
-                    pushPhoneTag("clicked_store", phone);
-                });
-            }
-
-            agumentsContainer.append(augmentsRow3);
-        }
-        
-        phoneListItem.parentNode.insertBefore(agumentsContainer, phoneListItem.nextSibling);
+      agumentsContainer.append(augmentsRow2);
     }
+
+    if (shopLink) {
+      augmentsRow3.append(augmentsShopLink);
+      augmentsRow3.className = "augment-shop";
+      augmentsShopLink.setAttribute("target", "_blank");
+
+      augmentsShopLink.setAttribute("href", shopLink);
+      augmentsShopLink.textContent = shopLinkLabel;
+      if (analyticsEnabled) {
+        augmentsShopLink.addEventListener("click", function () {
+          pushPhoneTag("clicked_store", phone);
+        });
+      }
+
+      agumentsContainer.append(augmentsRow3);
+    }
+
+    phoneListItem.parentNode.insertBefore(
+      agumentsContainer,
+      phoneListItem.nextSibling,
+    );
+  }
 }
